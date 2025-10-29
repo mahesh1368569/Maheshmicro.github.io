@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Interpretable ML reveals drought-resilient taxa in cowpea — RF + SHAP</title>
+  <meta name="description" content="Deep-dive blog on cowpea rhizoplane microbiome under drought: rationale, objectives, lite methods, key results, and RF+SHAP insights with microbial rescue perspective." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f7fafc; --surface:#ffffff; --ink:#0f1720; --muted:#5b6b80; --line:#e6edf5;
+      --accent:#0ea5e9; --accent-2:#6366f1; --ring: rgba(14,165,233,0.18);
+      --shadow: 0 10px 26px rgba(2,8,20,0.06);
+      --hero-grad: linear-gradient(135deg,#e0f2fe 0%, #ede9fe 100%);
+      --chip:#eaf3ff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);}
+    a{color:#0b72d2;text-decoration:none}
+    a:hover{text-decoration:underline}
+    header.hero{background:var(--hero-grad);border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+    .container{max-width:1100px;margin:0 auto;padding:20px}
+    .hero-inner{display:grid;gap:18px;grid-template-columns:1fr;align-items:center;min-height:48vh}
+    @media(min-width:960px){.hero-inner{grid-template-columns:62% 38%;}}
+    .eyebrow{display:inline-block;background:#e8f4ff;border:1px solid #d9e9ff;color:#334155;padding:6px 10px;border-radius:999px;font-size:12px;margin-bottom:12px}
+    h1{margin:6px 0 8px;font-size:clamp(28px,4.8vw,50px);line-height:1.06;letter-spacing:-0.02em}
+    .sub{color:var(--muted);font-size:clamp(15px,1.2vw,18px);max-width:65ch}
+    .hero-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+    .hero-card .meta{color:var(--muted);font-size:14px;margin-top:6px}
+    .chipbar{margin-top:8px;display:flex;flex-wrap:wrap;gap:8px}
+    .chip{padding:6px 10px;border-radius:999px;background:#0b1220; color:#cfe8ff;border:1px solid #1f2a40;font-size:12px}
+    nav.toc{position:sticky;top:0;background:#ffffffcc;border-bottom:1px solid var(--line);backdrop-filter: blur(8px);z-index:20}
+    .toc-inner{max-width:1100px;margin:0 auto;padding:8px 20px;display:flex;flex-wrap:wrap;gap:10px}
+    .toc a{padding:8px 12px;border-radius:10px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);color:#334155;font-size:14px}
+    main{max-width:1100px;margin:0 auto;padding:20px}
+    section.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;margin:14px 0;box-shadow:var(--shadow)}
+    h2{margin:0 0 10px;font-size:26px}
+    h3{margin:16px 0 6px;font-size:19px}
+    .meta{color:var(--muted);font-size:14px}
+    ul,ol{margin:8px 0 0 22px}
+    .figure{border:1px dashed #d8e0ec;background:#fbfdff;border-radius:14px;padding:12px;display:grid;gap:10px}
+    .figure .ph{width:100%;aspect-ratio:16/9;background:#eef3f8;border:1px solid #e6ebf2;border-radius:10px;display:grid;place-items:center;color:#64748b;font-size:14px}
+    .figure img{width:100%;height:auto;max-height:460px;object-fit:contain;border-radius:10px}
+    .caption{color:#5b6b80;font-size:13px}
+    .callout{background:#eef9ff;border:1px solid #cbefff;color:#08425c;border-radius:12px;padding:12px}
+    .q-list li{margin-bottom:8px}
+    footer{color:var(--muted);text-align:center;padding:24px}
+    .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid #bde0ff;background:#f0f9ff;color:#0b3b66}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-inner">
+      <div>
+        <span class="eyebrow">Blog · Methods & Insights</span>
+        <h1>Interpretable ML decodes drought responses in the cowpea rhizoplane</h1>
+        <p class="sub">What RF + SHAP reveals about marker taxa under water stress, and how microbial “rescue effects” might be leveraged for crop resilience.</p>
+        <div class="chipbar">
+          <span class="chip">Random Forest</span><span class="chip">SHAP</span><span class="chip">Rhizoplane microbiome</span><span class="chip">Drought</span>
+        </div>
+      </div>
+      <div class="hero-card">
+        <strong>Citation</strong>
+        <div class="meta">Chinthalapudi D.P.M. <em>et&nbsp;al.</em> (2025). Drought-induced shifts in cowpea rhizoplane bacterial communities across different vegetative and reproductive stages. <em>Plant Stress</em> 17:100915. <a href="../1-s2.0-S2667064X25001836-main.pdf" target="_blank" rel="noopener">Open PDF</a></div>
+        <div class="btns">
+          <a class="btn" href="../index.html">↩ Back to portfolio</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <div class="toc-inner">
+      <a href="#rationale">Rationale</a>
+      <a href="#objectives">Objectives</a>
+      <a href="#methods">Lite Methods</a>
+      <a href="#results">Key Results</a>
+      <a href="#ml">RF + SHAP Insights</a>
+      <a href="#rescue">Microbial Rescue</a>
+      <a href="#figs">Suggested Figures</a>
+      <a href="#open">Open Questions</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="rationale" class="card">
+      <h2>Rationale</h2>
+      <p>Periodic droughts restructure the rhizoplane microbiome and, in turn, plant physiology. Yet most studies either collapse over developmental stages or emphasize diversity metrics without resolving <em>which taxa</em> drive prediction at specific stages and genotypes. This work asks whether interpretable machine learning can expose robust biomarkers of drought response that align with ecological mechanisms (substrate use, enzyme activity, host physiology) and are portable to management.</p>
+      <div class="callout"><strong>Why it matters:</strong> If we can pinpoint taxa that consistently track or counteract drought effects, we unlock testable inoculant designs and stage‑aware management (e.g., priming during vegetative windows).</div>
+    </section>
+
+    <section id="objectives" class="card">
+      <h2>Objectives</h2>
+      <ol>
+        <li>Quantify how drought and growth stage reshape cowpea rhizoplane community structure and function.</li>
+        <li>Use an interpretable ML stack (Random Forest + SHAP) to identify marker taxa predictive of drought status and compare with DESeq2‑based differential abundance.</li>
+        <li>Link key taxa to plant traits (chlorophyll, stomatal conductance, biomass) and soil enzymes (BG, NAG) to generate mechanistic hypotheses.</li>
+      </ol>
+    </section>
+
+    <section id="methods" class="card">
+      <h2>Lite Methods</h2>
+      <ul>
+        <li><strong>Design:</strong> Two genotypes (ES4, UCR369) × two moisture regimes (control, 50% irrigation) × four stages (V2, V4, R1, R4); 64 rhizosphere/rhizoplane samples.</li>
+        <li><strong>Omics:</strong> 16S rRNA (V4) amplicon profiling via QIIME2/DADA2; taxonomy with SILVA 138.2. Community‑level physiological profiling via Biolog EcoPlates (AWCD, substrate groups).</li>
+        <li><strong>Traits & enzymes:</strong> Chlorophyll, NFI, gs, transpiration, biomass; BG and NAG assays.</li>
+        <li><strong>Statistics:</strong> α/β‑diversity; PERMANOVA; RDA linking taxa ↔ traits/enzymes.</li>
+        <li><strong>ML:</strong> Random Forest classification with nested CV; SHAP for feature attribution across taxonomic ranks; cross‑checked against DESeq2.</li>
+      </ul>
+    </section>
+
+    <section id="results" class="card">
+      <h2>Key Results</h2>
+      <ul>
+        <li><strong>Diversity:</strong> Drought reduced α‑diversity overall; genotype effects were pronounced, with UCR369 maintaining higher richness than ES4 across stages.</li>
+        <li><strong>Composition:</strong> Drought shifted communities toward Gram‑positive phyla (Actinobacteriota ↑, Firmicutes context‑dependent) with Proteobacteria declining in UCR369; ES4 retained Proteobacteria dominance.</li>
+        <li><strong>Function:</strong> Biolog profiles indicated increased polymer/amine utilization under drought, consistent with stress‑adapted decomposer strategies.</li>
+        <li><strong>Link to traits:</strong> RDA highlighted plant physiology (chlorophyll, NFI, gs, E) and enzymes (BG, NAG) as strong correlates of community shifts.</li>
+      </ul>
+    </section>
+
+    <section id="ml" class="card">
+      <h2>RF + SHAP Insights</h2>
+      <p>Genus‑level models yielded the best predictive performance for drought status (AUC ≈ 0.87). SHAP values ranked taxa by <em>marginal contribution</em> to predictions, offering local explanations per sample. Convergence between SHAP‑top taxa and DESeq2‑enriched features supports biological signal rather than model artifacts.</p>
+      <ul>
+        <li><strong>Top drought‑associated clades:</strong> Actinobacteriota (e.g., <em>Streptomyces</em>) and Cyanobacteria, with SHAP highlighting taxa that influence predictions even at moderate relative abundance.</li>
+        <li><strong>Ecological read‑through:</strong> Actinobacteria contribute osmolytes, antibiotics, and polymer‑degrading enzymes; Cyanobacteria may support N status and redox buffering, aligning with chlorophyll/NFI correlations.</li>
+        <li><strong>Interpretability win:</strong> SHAP explains <em>how much</em> each taxon nudges a sample toward the “drought” vs “control” class—useful for building targeted consortia or stage‑specific interventions.</li>
+      </ul>
+      <div class="figure">
+        <img src="images/Shap+genus.png" alt="SHAP summary plot for genus-level features">
+        <div class="caption"><strong>Figure A.</strong> SHAP summary plot at the genus level. Replace with your model output.</div>
+      </div>
+    </section>
+
+    <section id="rescue" class="card">
+      <h2>Microbial Rescue & Stress Tolerance</h2>
+      <p><strong>Microbial rescue</strong> posits that resident or introduced microbes buffer host fitness under stress by enhancing nutrient acquisition, adjusting hormone signaling (e.g., IAA, ABA cross‑talk), producing osmoprotectants, and stabilizing carbon use efficiency. Here, enrichment of Actinobacteria and N‑fixing symbionts suggests two rescue routes: (i) <em>metabolic hardening</em> via osmolyte/antibiotic portfolios and polymer degradation; (ii) <em>resource support</em> via improved N economy and rhizosphere priming. RF+SHAP‑nominated taxa provide a shortlist for greenhouse consortia and gnotobiotic validation.</p>
+      <div class="callout"><strong>Design hint:</strong> Build 2–3 synthetic consortia spanning complementary functions (osmolyte production, polymer degradation, phytohormone modulation, N support). Test stage‑aware inoculation (V2/V4) vs rescue at R1/R4.</div>
+    </section>
+
+    <section id="figs" class="card">
+      <h2>Suggested Figures for this Page</h2>
+      <ol>
+        <li><strong>Study schematic:</strong> Genotype × treatment × stage design with sampling timeline. <div class="figure"><div class="ph">Insert: design_timeline.png</div><div class="caption">Figure 1. Experimental design (replace with your schematic).</div></div></li>
+        <li><strong>Community shifts:</strong> Stacked bars or ridge plots at the phylum/genus level emphasizing Actinobacteriota ↔ Proteobacteria trade‑off. <div class="figure"><div class="ph">Insert: composition_bars.png</div><div class="caption">Figure 2. Community composition across stages and treatments.</div></div></li>
+        <li><strong>RF + SHAP:</strong> SHAP beeswarm/summary and top‑features bar chart; include per‑sample force plots for interpretability. <div class="figure"><div class="ph">Insert: shap_beeswarm.png</div><div class="caption">Figure 3. SHAP beeswarm for genus‑level features.</div></div></li>
+        <li><strong>Greenhouse phenotypes:</strong> Your forthcoming growth/physiology images aligned to taxa shifts. <div class="figure"><div class="ph">Insert: greenhouse_photos.png</div><div class="caption">Figure 4. Representative greenhouse images (to be added).</div></div></li>
+      </ol>
+      <p class="meta">Place actual images in <code>blog/assets/</code> and replace the placeholders’ <code>src</code> attributes (e.g., <code>blog/assets/shap_summary.png</code>).</p>
+    </section>
+
+    <section id="open" class="card">
+      <h2>Open Questions & Next Hypotheses</h2>
+      <ul class="q-list">
+        <li><strong>Stage specificity:</strong> Do SHAP‑ranked taxa act consistently across stages, or do we need stage‑targeted consortia for maximal benefit?</li>
+        <li><strong>Absolute vs relative effects:</strong> How do absolute abundances (qPCR/flow) change for top taxa, and do they better correlate with physiology than relative abundances?</li>
+        <li><strong>Metabolome links:</strong> Which exudate/metabolite families (e.g., phenolics, terpenoids) co‑vary with SHAP‑top taxa under drought? Can we elicit them agronomically?</li>
+        <li><strong>Transferability:</strong> Will the RF+SHAP markers generalize across soils/cultivars/sites, or are they largely context‑dependent? Multi‑site harmonized re‑analyses needed.</li>
+        <li><strong>Rescue mechanisms:</strong> Can we parse contributions of osmolyte production vs hormone signaling vs polymer degradation using knockout/auxotroph strains?</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h3>References & Suggested Reading</h3>
+      <ul class="meta">
+        <li>Chinthalapudi D.P.M. <em>et&nbsp;al.</em> (2025) Plant Stress 17:100915 (open PDF above).</li>
+        <li>Hagen M. <em>et&nbsp;al.</em> (2024) Interpretable ML decodes soil microbiome’s response to drought. <em>Environmental Microbiome</em> 19:35.</li>
+        <li>Naylor D., Coleman‑Derr D. (2018) Drought stress and root‑associated bacterial communities. <em>Frontiers in Plant Science</em>.</li>
+        <li>Yang N. <em>et&nbsp;al.</em> (2021) Emergent community properties induce enhanced drought tolerance. <em>NPJ Biofilms & Microbiomes</em>.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>© <span id="y"></span> Mahesh Chinthalapudi — Blog</footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
