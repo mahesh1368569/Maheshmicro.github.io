@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Transport & Fate of Bacterial Communities in Mississippi Coastal Ecosystems</title>
-  <meta name="description" content="Project page for 'Transport and Fate of Bacterial Communities in Mississippi Coastal Ecosystems' — objectives, background, methods, and outcomes." />
+  <meta name="description" content="Overview, background, and goals for the Transport & Fate project on Mississippi coastal bacterial communities." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -44,10 +44,19 @@
     h2{margin:0 0 8px;font-size:26px}
     h3{margin:16px 0 6px;font-size:18px}
     .meta{color:var(--muted);font-size:14px}
-    ul{margin:8px 0 0 20px}
+    ul,ol{margin:8px 0 0 20px}
     .grid{display:grid;gap:16px}
-    @media(min-width:900px){.cols-2{grid-template-columns:1fr 1fr}}
-    .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, monospace;background:#f1f5fb;border:1px solid var(--line);border-radius:6px;padding:2px 6px}
+    @media(min-width:900px){.cols-2{grid-template-columns:1fr 1fr} .cols-3{grid-template-columns:1fr 1fr 1fr}}
+    .figure{
+      border:1px dashed #d8e0ec;background:#fafcff;border-radius:14px;padding:12px;display:grid;gap:10px;
+    }
+    .figure .ph{
+      width:100%;aspect-ratio:16/9;background:#eef2f7;border:1px solid #e6ebf2;border-radius:10px;
+      display:grid;place-items:center;color:#64748b;font-size:14px;
+    }
+    .caption{color:#5b6b80;font-size:13px}
+    .gallery{display:grid;gap:12px}
+    @media(min-width:800px){.gallery{grid-template-columns:1fr 1fr}}
     footer{color:var(--muted);text-align:center;padding:24px}
   </style>
 </head>
@@ -57,14 +66,14 @@
       <div class="title">
         <span class="eyebrow">Project</span>
         <h1>Transport &amp; Fate of Bacterial Communities in Mississippi Coastal Ecosystems</h1>
-        <p class="sub">Understanding how abiotic gradients, nutrient supply, and the estuarine metabolome shape the assembly, structure, and dynamics of free‑living vs aggregate‑associated bacterial communities—and their links to oyster microbiomes.</p>
+        <p class="sub">A concise description of the scientific context and goals for understanding how hydrological and biogeochemical gradients shape free‑living and aggregate‑associated bacterial communities across Mississippi’s nearshore estuaries.</p>
       </div>
       <div class="hero-card">
         <strong>Quick facts</strong>
         <ul>
           <li><strong>Region:</strong> Bay St. Louis, Biloxi Bay, Pascagoula Bay</li>
           <li><strong>Fractions:</strong> Free‑living vs aggregate‑associated bacteria</li>
-          <li><strong>Approaches:</strong> Amplicon, metagenomics, environmental metabolomics, SourceTracker</li>
+          <li><strong>Approach:</strong> Community profiling + functional inference; environmental metabolome; source‑tracking</li>
         </ul>
       </div>
     </div>
@@ -73,12 +82,9 @@
   <nav class="toc">
     <div class="toc-inner">
       <a href="#overview">Overview</a>
-      <a href="#background">Background</a>
-      <a href="#goals">Goals &amp; Objectives</a>
-      <a href="#aims">Aims</a>
-      <a href="#plan">Methods &amp; Plan</a>
-      <a href="#outcomes">Expected Outcomes</a>
-      <a href="#rationale">Rationale</a>
+      <a href="#background">Basics &amp; Background</a>
+      <a href="#goals">Goals</a>
+      <a href="#figures">Illustrative Figures</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
@@ -86,121 +92,71 @@
   <main>
     <section id="overview" class="card">
       <h2>Overview</h2>
-      <p><strong>Problem.</strong> Despite the central role of bacteria in coastal ecosystem functioning, nearshore bacterial communities in Mississippi remain largely uncharacterized. Their spatial patterns, temporal dynamics, and ecological drivers are insufficiently known, limiting our ability to anticipate ecosystem responses and manage risks to resources such as oysters.</p>
-      <p class="meta">This page summarizes the project scope, scientific motivations, objectives, and anticipated outcomes.</p>
+      <p><strong>Problem.</strong> Bacterial communities underpin core coastal ecosystem services—bioremediation, nutrient recycling, and food‑web support—but nearshore Mississippi waters remain poorly characterized. We lack an updated baseline of community diversity and composition across estuaries, a clear view of how abiotic drivers (salinity, temperature, dissolved oxygen) and nutrient regimes shape assembly, and a quantitative understanding of how particulate aggregates may supply bacteria—including potential pathogens—to benthic feeders such as oysters.</p>
+      <p>By separating free‑living from aggregate‑associated fractions and integrating environmental metabolome information, this project links microbial community trajectories to hydrological inputs (riverine, urban/WWTP, wetland) and estuarine physicochemical variability. The resulting baseline enables comparisons among Bay St. Louis, Biloxi Bay, and Pascagoula Bay and sets the stage for evaluating recovery or divergence relative to historical disturbances.</p>
     </section>
 
     <section id="background" class="card">
       <h2>Basics &amp; Background — Marine Microbiome</h2>
       <ol>
-        <li>Coastal regions are among the most productive ecosystems on the planet due to their position at the land–water interface.</li>
-        <li>Nearshore waters receive high rates of organic matter and nutrients from rivers and urban centers. These inputs combine with the open ocean to fuel productivity and create variability in physicochemical properties.</li>
-        <li>High productivity supports vital ecosystem services: bioremediation, nutrient recycling, and culturally/economically valuable fisheries and aquaculture.</li>
+        <li><strong>Coastal productivity at the land–sea interface.</strong> Nearshore waters receive continuous inputs of organic matter and nutrients from rivers and urban centers; mixing with oceanic waters fuels high primary production and strong physicochemical gradients.</li>
+        <li><strong>Microbial centrality in carbon and nutrient cycling.</strong> Heterotrophic bacteria consume dissolved and particulate organic matter, remineralize nutrients, and transform redox‑active compounds—processes that regulate oxygen dynamics and trophic transfer.</li>
+        <li><strong>Aggregates as microbial hubs.</strong> Particulate organic matter (marine snow and estuarine flocs) concentrates cells, enzymes, and substrates, accelerating biogeochemical reactions; aggregates settle to benthic zones where filter feeders (e.g., oysters) ingest them.</li>
+        <li><strong>Assembly along gradients.</strong> Salinity, temperature, dissolved oxygen, and nutrient availability filter communities; riverine pulses and storm events restructure composition at event and seasonal scales.</li>
       </ol>
+      <div class="figure">
+        <div class="ph">Figure Placeholder — Microbial food web &amp; DOM cycling (insert image file here)</div>
+        <div class="caption"><strong>Figure 1.</strong> Conceptual schematic of microbial processing of dissolved/particulate organic matter and links to higher trophic levels. Suggested sources for inspiration: classic microbial loop (Azam et&nbsp;al., 1983); coastal bacterioplankton overviews (Fuhrman, 2009; Kirchman, 2016); DOM–microbe interactions (Moran et&nbsp;al., 2016). Replace with a figure you have rights to use and include proper citation/credit in the caption.</div>
+      </div>
     </section>
 
     <section id="goals" class="card">
-      <h2>Goals &amp; Objectives</h2>
-      <p><strong>Goal:</strong> Elucidate ecological mechanisms that shape the diversity and composition of coastal bacteria in Mississippi and regulate ecosystem functions.</p>
-      <h3>Objectives</h3>
-      <ol>
-        <li>Characterize nearshore bacterial communities and analyze drivers of their spatial and temporal variability.</li>
-        <li>Identify major sources of bacterial inputs to the coastal region and the ecological processes that regulate their subsequent fate.</li>
-        <li>Investigate how the quality and quantity of organic matter vary along the coast and regulate bacterial abundance.</li>
-      </ol>
-      <p>We will leverage variability in abiotic conditions, nutrient availability, and the estuarine metabolome to investigate bacterial community assembly, structure, and dynamics.</p>
+      <h2>Goals</h2>
+      <p><strong>Primary goal:</strong> Resolve the ecological mechanisms that shape diversity and composition of coastal bacteria in Mississippi and connect them to ecosystem functions and aquaculture‑relevant outcomes (e.g., oyster microbiomes).</p>
       <ul>
-        <li><strong>Spatial dynamics:</strong> Examine differences at local scales (within estuaries) and regional scales (across the three bays) to capture fine‑scale heterogeneity and broader biogeographic patterns.</li>
-        <li><strong>Temporal dynamics:</strong> Track intra‑annual (seasonal) and inter‑annual trends to assess stability vs variability over time.</li>
-        <li><strong>Assembly drivers:</strong> Link community patterns to salinity, temperature, dissolved oxygen, nutrients (N, P, organic C), and the estuarine metabolome.</li>
+        <li>Characterize nearshore bacterial communities and quantify spatial (within‑ and among‑estuaries) and temporal (seasonal/inter‑annual) variability.</li>
+        <li>Identify and apportion the major sources contributing bacteria to each estuary (oceanic, riverine, wetland, urban/WWTP, agricultural).</li>
+        <li>Relate community structure to abiotic conditions, nutrients (N, P, organic C), and the estuarine metabolome; distinguish free‑living vs aggregate‑associated fractions to assess benthic delivery pathways.</li>
       </ul>
     </section>
 
-    <section id="aims" class="card">
-      <h2>Aims</h2>
-      <h3>Aim 1</h3>
-      <p><strong>Characterize nearshore bacterial communities</strong> and analyze the drivers of spatial and temporal variability.</p>
-      <h3>Aim 2</h3>
-      <p><strong>Estimate major sources of bacterial inputs</strong> to the coastal region and the ecological processes that regulate their fate in the estuary.</p>
-      <ul>
-        <li>Potential sources include the open ocean, terrestrial soils, tidal wetlands, urban centers, wastewater, and riverine inputs.</li>
-        <li>Source identification informs ecological understanding and applied management (e.g., tracing pathways of potential pathogens).</li>
-        <li>Sampling design: 3 replicates per source class (urban soil, wastewater, coastal wetland soil, beach sand, estuarine sediment, riverine sediment, riverine plankton, agricultural soil, barrier island sediments, ocean) per estuary — <em>~90 potential source communities per estuary</em>.</li>
-        <li>Use <span class="kbd">SourceTracker</span> to infer the relative influence of source habitats for observed communities.</li>
-      </ul>
-      <h3>Aim 3</h3>
-      <p><strong>Investigate the quality and quantity of organic matter</strong> (DOM/particulates) along the coast and identify molecules and biogeochemical transformations that structure bacterial communities.</p>
-      <ul>
-        <li>DOM quantity/quality governs energy flow through the food web and bacterial growth efficiency.</li>
-        <li>Expect longitudinal gradients in molecular complexity along river→ocean transects that relate to bacterial composition and function.</li>
-        <li>Hypotheses:
-          <ol>
-            <li>Bacterial diversity is positively related to DOM molecular diversity/complexity.</li>
-            <li>DOM molecular complexity exhibits a longitudinal gradient that aligns with bacterial community shifts.</li>
-            <li>Community composition and functional genes (metabolic/biogeochemical) align with dominant transformations inferred from high‑resolution metabolomic data.</li>
-          </ol>
-        </li>
-      </ul>
-    </section>
-
-    <section id="plan" class="card">
-      <h2>Methods &amp; Plan</h2>
-      <div class="grid cols-2">
-        <div>
-          <h3>Fractions &amp; Oyster Links</h3>
-          <p>We separately analyze free‑living and aggregate‑associated bacteria. Aggregates bind to particulate organic matter and sink to the benthos where oysters feed. Identifying aggregate‑associated taxa can reveal hotspots of potential pathogens and clarify how riverine transport and environmental conditions regulate their abundance.</p>
-          <ul>
-            <li><strong>Free‑living:</strong> individual cells suspended in the water column.</li>
-            <li><strong>Aggregate‑associated:</strong> cells attached to particulate organic matter; heavier and sink into benthic feeding zones for oysters.</li>
-          </ul>
+    <section id="figures" class="card">
+      <h2>Illustrative Figures (placeholders)</h2>
+      <div class="grid cols-2 gallery">
+        <div class="figure">
+          <div class="ph">Insert: sites_map.jpg (16:9)</div>
+          <div class="caption"><strong>Figure 2.</strong> Map of sampling transects across Bay St. Louis, Biloxi Bay, and Pascagoula Bay with river‑to‑ocean stations. <em>Replace with your own map and credit basemap/provider as needed.</em></div>
         </div>
-        <div>
-          <h3>Data Streams</h3>
-          <ul>
-            <li>Amplicon sequencing for community profiling.</li>
-            <li>Shotgun metagenomics for functional potential and MAGs.</li>
-            <li>Environmental metabolomics (DOM complexity/biogeochemistry).</li>
-            <li>Physicochemical measurements: salinity, temperature, DO, nutrients, etc.</li>
-            <li>Source tracking (SourceTracker) with a comprehensive source library.</li>
-          </ul>
+        <div class="figure">
+          <div class="ph">Insert: aggregates_vs_free_living.png (16:9)</div>
+          <div class="caption"><strong>Figure 3.</strong> Schematic distinguishing free‑living vs aggregate‑associated bacteria and potential transfer to oyster microbiomes. <em>Use your own schematic or a licensed figure; add citation in caption.</em></div>
+        </div>
+        <div class="figure">
+          <div class="ph">Insert: sampling_photos_01.jpg</div>
+          <div class="caption"><strong>Figure 4.</strong> Field sampling in nearshore waters (photos). <em>Replace with your images and brief notes on date/location/conditions.</em></div>
+        </div>
+        <div class="figure">
+          <div class="ph">Insert: sampling_photos_02.jpg</div>
+          <div class="caption"><strong>Figure 5.</strong> On‑water measurements (CTD/DO/nutrients) and sample processing. <em>Replace with your images and instrument details.</em></div>
         </div>
       </div>
-      <h3>Sampling Design &amp; Analysis</h3>
-      <ul>
-        <li>Spatiotemporal sampling across Bay St. Louis, Biloxi Bay, and Pascagoula Bay.</li>
-        <li>Within‑bay transects from river to ocean; replicate stations to resolve local heterogeneity.</li>
-        <li>Seasonal campaigns plus between‑year comparisons for temporal trends.</li>
-        <li>Statistical links between community structure, metabolome, and abiotic drivers; comparison of free‑living vs aggregate fractions.</li>
-      </ul>
-    </section>
-
-    <section id="outcomes" class="card">
-      <h2>Expected Outcomes &amp; Deliverables</h2>
-      <ul>
-        <li>Baseline inventory of nearshore bacterial diversity and composition along the Mississippi coast.</li>
-        <li>Quantification of spatiotemporal variability and identification of key environmental drivers.</li>
-        <li>Source attribution of bacterial inputs across estuaries (oceanic, riverine, urban, wetland, etc.).</li>
-        <li>Integration of DOM molecular complexity with bacterial composition and functional gene profiles.</li>
-        <li>Risk‑relevant insights for oyster microbiome colonization and potential pathogen hot‑spots (aggregate fraction focus).</li>
-        <li>Open workflows for reproducible community and source‑tracking analyses.</li>
-      </ul>
-    </section>
-
-    <section id="rationale" class="card">
-      <h2>Rationale</h2>
-      <ol>
-        <li>Nearshore bacterial communities in Mississippi are largely uncharacterized: spatial/temporal dynamics and drivers remain unknown.</li>
-        <li>Riverine and urban inputs shape fluxes and composition of organic matter, nutrients, and microorganisms; we link these to bacterial community structure.</li>
-        <li>Comprehensive studies are lacking for Biloxi and Pascagoula; Bay St. Louis data mostly follow a major environmental disaster. We will generate an updated inventory and enable decade‑scale comparisons to evaluate recovery or divergence among estuaries.</li>
-        <li>Spatiotemporal sampling reveals whether temporal variation is regionally coherent (e.g., seasonal forcing) or estuary‑specific (local inputs), informing management scales. Partitioning free‑living vs particle‑associated bacteria highlights taxa entering oyster diets and possible disease risks.</li>
-      </ol>
     </section>
 
     <section id="contact" class="card">
       <h2>Contact</h2>
       <p><strong>Lead:</strong> Mahesh Chinthalapudi, Department of Biological Sciences, Mississippi State University</p>
-      <p><strong>Email:</strong> <a href="mailto:maheshchinthalapudioleri@gmail.com">maheshchinthalapudioleri@gmail.com</a></p>
-      <p><a href="../index.html">↩ Back to main portfolio</a></p>
+      <p><strong>Email:</strong> maheshchinthalapudioleri [at] gmail [dot] com</p>
+      <p><a href="index.html">↩ Back to main portfolio</a></p>
+    </section>
+
+    <section class="card" style="opacity:.85">
+      <h3>Suggested Reading (for background)</h3>
+      <ul class="meta">
+        <li>Azam, F., et al. (1983). The ecological role of water‑column microbes in the sea. <em>Marine Ecology Progress Series</em>.</li>
+        <li>Fuhrman, J. A. (2009). Microbial community structure and its functional implications. <em>Nature</em>.</li>
+        <li>Kirchman, D. L. (2016). Growth rates, production, and biomass of bacteria in oceanic systems. <em>Ann. Rev. Marine Science</em>.</li>
+        <li>Moran, M. A., et al. (2016). Ecological interactions between microorganisms and dissolved organic matter. <em>Elsevier</em>.</li>
+      </ul>
     </section>
   </main>
 
