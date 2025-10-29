@@ -78,9 +78,9 @@
       <a href="#objectives">Objectives</a>
       <a href="#methods">Lite Methods</a>
       <a href="#results">Key Results</a>
+      <a href="#carbon">Recalcitrant C under Drought</a>
       <a href="#ml">RF + SHAP Insights</a>
       <a href="#rescue">Microbial Rescue</a>
-      <a href="#figs">Suggested Figures</a>
       <a href="#open">Open Questions</a>
     </div>
   </nav>
@@ -102,7 +102,7 @@
     </section>
 
     <section id="methods" class="card">
-      <h2>Lite Methods</h2>
+      <h2>Methods</h2>
       <ul>
         <li><strong>Design:</strong> Two genotypes (ES4, UCR369) × two moisture regimes (control, 50% irrigation) × four stages (V2, V4, R1, R4); 64 rhizosphere/rhizoplane samples.</li>
         <li><strong>Omics:</strong> 16S rRNA (V4) amplicon profiling via QIIME2/DADA2; taxonomy with SILVA 138.2. Community‑level physiological profiling via Biolog EcoPlates (AWCD, substrate groups).</li>
@@ -115,11 +115,30 @@
     <section id="results" class="card">
       <h2>Key Results</h2>
       <ul>
-        <li><strong>Diversity:</strong> Drought reduced α‑diversity overall; genotype effects were pronounced, with UCR369 maintaining higher richness than ES4 across stages.</li>
-        <li><strong>Composition:</strong> Drought shifted communities toward Gram‑positive phyla (Actinobacteriota ↑, Firmicutes context‑dependent) with Proteobacteria declining in UCR369; ES4 retained Proteobacteria dominance.</li>
-        <li><strong>Function:</strong> Biolog profiles indicated increased polymer/amine utilization under drought, consistent with stress‑adapted decomposer strategies.</li>
-        <li><strong>Link to traits:</strong> RDA highlighted plant physiology (chlorophyll, NFI, gs, E) and enzymes (BG, NAG) as strong correlates of community shifts.</li>
+        <li><strong>Diversity:</strong> Drought reduced α‑diversity in aggregate; however, <em>genotype</em> and <em>plant developmental stage</em> explained more variance than treatment alone, indicating host‑ and stage‑specific filtering of the rhizoplane.</li>
+        <li><strong>Composition:</strong> Shifts toward decomposer‑leaning clades under water limitation (Actinobacteriota ↑; context‑dependent Firmicutes), with <em>Proteobacteria</em> responses modulated by genotype. ES4 retained Proteobacteria dominance longer than UCR369, consistent with stage‑specific assembly trajectories.</li>
+        <li><strong>Function:</strong> Biolog EcoPlates signaled increased utilization of <em>complex/recalcitrant C pools</em> (polymers, amines) under drought, consistent with enzyme‑mediated access to higher‑bond‑energy substrates.</li>
+        <li><strong>Trait links:</strong> RDA connected community shifts to physiology (chlorophyll, NFI, gs, E) and enzymes (BG, NAG), suggesting coordinated regulation of C acquisition and cell‑wall turnover under stress.</li>
+    </ul>
+     <div class="figure">
+        <img src="images/cowpea-alpha.jpg" alt="Alpha and beta diversity of cowpea rhizoplane microbiome under drought">
+        <div class="caption"><strong>Figure 1.</strong> Cowpea rhizoplane microbiome profiles significantly altered by drought. (A) and (B) Chao1 and Shannon’s diversity index, respectively for two cowpea genotypes (ES4 and UCR369) at four developmental stages, comparing control and drought treatments.</div>
+      </div>
+    </section>
+
+    <section id="carbon" class="card">
+      <h2>Recalcitrant Carbon Use under Drought</h2>
+      <p>Water limitation reduces diffusion and labile C flux, shifting advantages to taxa capable of mining <em>recalcitrant</em> substrates via oxidative and hydrolytic enzymes. In this study, increased polymer/amine utilization (EcoPlate signal) and Actinobacteria enrichment together indicate a metabolic pivot toward macromolecular C (e.g., cellulose‑ and chitin‑derived pools). This aligns with drought frameworks where communities invest in extracellular enzymes to maintain C and N supply when mass transfer is constrained.</p>
+      <ul>
+        <li><strong>Enzyme economy:</strong> β‑glucosidase (BG) and N‑acetyl‑β‑D‑glucosaminidase (NAG) activity patterns are consistent with accelerated cycling of polysaccharides and microbial necromass.</li>
+        <li><strong>Ecophysiological fit:</strong> Actinobacteria’s osmolyte production and polymer‑degrading portfolios match the observed substrate‑use profile and SHAP‑highlighted features.</li>
+        <li><strong>Host coupling:</strong> Genotype × stage differences in root exudation likely modulate the labile‑to‑recalcitrant balance, restructuring decomposer guilds.</li>
       </ul>
+      <div class="figure">
+        <img src="images/c-use-cowpea.png" alt="Carbon use patterns in cowpea rhizoplane under drought">
+        <div class="caption"><strong>Figure 2.</strong> Average well color development (AWCD) of rhizosphere microbial communities in cowpea under control and drought. (A) AWCD responses for six carbon substrate groups (amines, amino acids, carbohydrates, carboxylic acids, phenolic acids, and polymers). Bars represent the mean ± SE (n = 32). (B) AWCD responses at four developmental stages (V2, V4, R1, and R4) for genotypes ES4 and UCR369 under control and drought. Different uppercase and bar denote significant differences among treatments and growth stages, respectively (p < 0.05).</div>
+      </div>
+      <div class="callout"><strong>Interpretation:</strong> The “recalcitrant‑C turn” emerges when exudation declines and water potentials drop; taxa with higher enzyme investment and osmoprotection dominate the rhizoplane.</div>
     </section>
 
     <section id="ml" class="card">
@@ -132,7 +151,7 @@
       </ul>
       <div class="figure">
         <img src="images/Shap+genus.png" alt="SHAP summary plot for genus-level features">
-        <div class="caption"><strong>Figure A.</strong> SHAP summary plot at the genus level. Replace with your model output.</div>
+        <div class="caption"><strong>Figure 3.</strong> SHAP summary plot at the genus level. Replace with your model output.</div>
       </div>
     </section>
 
@@ -141,27 +160,15 @@
       <p><strong>Microbial rescue</strong> posits that resident or introduced microbes buffer host fitness under stress by enhancing nutrient acquisition, adjusting hormone signaling (e.g., IAA, ABA cross‑talk), producing osmoprotectants, and stabilizing carbon use efficiency. Here, enrichment of Actinobacteria and N‑fixing symbionts suggests two rescue routes: (i) <em>metabolic hardening</em> via osmolyte/antibiotic portfolios and polymer degradation; (ii) <em>resource support</em> via improved N economy and rhizosphere priming. RF+SHAP‑nominated taxa provide a shortlist for greenhouse consortia and gnotobiotic validation.</p>
       <div class="callout"><strong>Design hint:</strong> Build 2–3 synthetic consortia spanning complementary functions (osmolyte production, polymer degradation, phytohormone modulation, N support). Test stage‑aware inoculation (V2/V4) vs rescue at R1/R4.</div>
     </section>
-
-    <section id="figs" class="card">
-      <h2>Suggested Figures for this Page</h2>
-      <ol>
-        <li><strong>Study schematic:</strong> Genotype × treatment × stage design with sampling timeline. <div class="figure"><div class="ph">Insert: design_timeline.png</div><div class="caption">Figure 1. Experimental design (replace with your schematic).</div></div></li>
-        <li><strong>Community shifts:</strong> Stacked bars or ridge plots at the phylum/genus level emphasizing Actinobacteriota ↔ Proteobacteria trade‑off. <div class="figure"><div class="ph">Insert: composition_bars.png</div><div class="caption">Figure 2. Community composition across stages and treatments.</div></div></li>
-        <li><strong>RF + SHAP:</strong> SHAP beeswarm/summary and top‑features bar chart; include per‑sample force plots for interpretability. <div class="figure"><div class="ph">Insert: shap_beeswarm.png</div><div class="caption">Figure 3. SHAP beeswarm for genus‑level features.</div></div></li>
-        <li><strong>Greenhouse phenotypes:</strong> Your forthcoming growth/physiology images aligned to taxa shifts. <div class="figure"><div class="ph">Insert: greenhouse_photos.png</div><div class="caption">Figure 4. Representative greenhouse images (to be added).</div></div></li>
-      </ol>
-      <p class="meta">Place actual images in <code>blog/assets/</code> and replace the placeholders’ <code>src</code> attributes (e.g., <code>blog/assets/shap_summary.png</code>).</p>
-    </section>
-
-    <section id="open" class="card">
+<section id="open" class="card">
       <h2>Open Questions & Next Hypotheses</h2>
       <ul class="q-list">
-        <li><strong>Stage specificity:</strong> Do SHAP‑ranked taxa act consistently across stages, or do we need stage‑targeted consortia for maximal benefit?</li>
-        <li><strong>Absolute vs relative effects:</strong> How do absolute abundances (qPCR/flow) change for top taxa, and do they better correlate with physiology than relative abundances?</li>
-        <li><strong>Metabolome links:</strong> Which exudate/metabolite families (e.g., phenolics, terpenoids) co‑vary with SHAP‑top taxa under drought? Can we elicit them agronomically?</li>
-        <li><strong>Transferability:</strong> Will the RF+SHAP markers generalize across soils/cultivars/sites, or are they largely context‑dependent? Multi‑site harmonized re‑analyses needed.</li>
-        <li><strong>Rescue mechanisms:</strong> Can we parse contributions of osmolyte production vs hormone signaling vs polymer degradation using knockout/auxotroph strains?</li>
-      </ul>
+        <li><strong>Genotype × Stage dominance:</strong> Do genotype and developmental stage consistently outweigh treatment effects across soils/seasons? Use mixed‑effects models and variance partitioning.</li>
+        <li><strong>Exudation–microbiome coupling:</strong> How do exudate quantity/quality (sugars vs phenolics/terpenoids) track SHAP‑ranked taxa across stages? Pair targeted metabolomics with absolute abundances of key genera.</li>
+        <li><strong>Recalcitrant‑C threshold:</strong> Under what moisture/exudation regimes does the community pivot from labile to complex C use? Manipulate water potential and exudate additions to identify tipping points.</li>
+        <li><strong>Enzyme fluxes:</strong> Do BG and NAG changes precede composition shifts (drivers) or follow them (responses)? Use time‑series enzyme assays + metatranscriptomics.</li>
+        <li><strong>Consortia design:</strong> Can minimal consortia combining osmolyte‑producing Actinobacteria with exudate‑responsive Proteobacteria improve WUE and yield across stages?</li>
+    </ul>
     </section>
 
     <section class="card">
@@ -171,11 +178,17 @@
         <li>Hagen M. <em>et&nbsp;al.</em> (2024) Interpretable ML decodes soil microbiome’s response to drought. <em>Environmental Microbiome</em> 19:35.</li>
         <li>Naylor D., Coleman‑Derr D. (2018) Drought stress and root‑associated bacterial communities. <em>Frontiers in Plant Science</em>.</li>
         <li>Yang N. <em>et&nbsp;al.</em> (2021) Emergent community properties induce enhanced drought tolerance. <em>NPJ Biofilms & Microbiomes</em>.</li>
-      </ul>
+      
+        <li>Schimel, J., Balser, T. C., &amp; Wallenstein, M. (2007). Microbial stress‑response physiology and ecosystem function. <em>Ecology</em>, 88, 1386‑1394.</li>
+        <li>Allison, S. D., &amp; Martiny, J. B. H. (2008). Resistance, resilience, and redundancy in microbial communities. <em>PNAS</em>, 105(Suppl 1), 11512‑11519.</li>
+        <li>Meisner, A., Leizeaga, A., Henry, S., &amp; Rousk, J. (2017). Partial drying accelerates bacterial growth recovery to rewetting. <em>Soil Biology &amp; Biochemistry</em>, 112, 269‑276.</li>
+        <li>de Vries, F. T., &amp; Shade, A. (2013). Controls on soil microbial community stability under climate change. <em>Frontiers in Microbiology</em>, 4, 265.</li>
+        <li>Preece, C., &amp; Peñuelas, J. (2020). Root exudates and rhizosphere microbiome under water stress. <em>Plant and Soil</em>, 455, 1‑17.</li>
+    </ul>
     </section>
   </main>
 
-  <footer>© <span id="y"></span> Mahesh Chinthalapudi — Blog</footer>
+  <footer>© <span id="y"></span> Mahesh Chinthalapudi — Drought-induced shifts in cowpea rhizoplane bacterial communities across different vegetative and reproductive stages</footer>
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
