@@ -54,6 +54,13 @@
       width:100%;aspect-ratio:16/9;background:#eef2f7;border:1px solid #e6ebf2;border-radius:10px;
       display:grid;place-items:center;color:#64748b;font-size:14px;
     }
+    .figure img {
+  width: 100%;
+  height: auto;
+  max-height: 450px;   /* 👈 adjust this number for larger/smaller */
+  object-fit: contain;
+  border-radius: 10px;
+}
     .caption{color:#5b6b80;font-size:13px}
     .gallery{display:grid;gap:12px}
     @media(min-width:800px){.gallery{grid-template-columns:1fr 1fr}}
@@ -69,7 +76,10 @@
         <p class="sub">A concise description of the scientific context and goals for understanding how hydrological and biogeochemical gradients shape free‑living and aggregate‑associated bacterial communities across Mississippi’s nearshore estuaries.</p>
       </div>
       <div class="hero-card">
-        <strong>Principal Investigator:</strong> Dr. Nathan Wisnoski, Assistant Professor, Department of Biological Sciences</li>
+        <strong>Principal Investigator:</strong>
+        <a href="https://https://www.nathanwisnoski.com/" target="_blank" rel="noopener">Dr. Nathan Wisnoski</a>,
+        Assistant Professor, Department of Biological Sciences
+      </p>
         
         <strong>Quick facts</strong>
         <ul>
@@ -123,7 +133,7 @@
     </section>
 
     <section id="figures" class="card">
-      <h2>Illustrative Figures (placeholders)</h2>
+      <!-- <h2>Illustrative Figures (placeholders)</h2>
       <div class="grid cols-2 gallery">
         <div class="figure">
           <div class="ph">Insert: sites_map.jpg (16:9)</div>
@@ -142,7 +152,7 @@
           <div class="caption"><strong>Figure 5.</strong> On‑water measurements (CTD/DO/nutrients) and sample processing. <em>Replace with your images and instrument details.</em></div>
         </div>
       </div>
-    </section>
+    </section>-->
 
     <section id="contact" class="card">
       <h2>Contact</h2>
