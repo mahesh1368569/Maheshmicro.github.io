@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cover Crops Restructure Soil Microbiomes — Project Overview</title>
+  <meta name="description" content="A pooled analysis in which we reanalyzed datasets generated within our lab from multiple cover crop experiments"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6f8fb; --surface:#ffffff; --ink:#0f1720; --muted:#58677a; --line:#e6ebf2;
+      --accent:#2563eb; --accent-2:#7c3aed; --chip:#eef2f7; --link:#1d4ed8; --ring: rgba(37,99,235,0.15);
+      --shadow: 0 10px 30px rgba(2, 8, 20, 0.06);
+      --hero-grad: linear-gradient(135deg,#eaf2ff 0%, #efe7ff 100%);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);}
+    a{color:var(--link);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header.hero{background:var(--hero-grad);border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+    .container{max-width:1100px;margin:0 auto;padding:20px}
+    .hero-inner{display:grid;gap:18px;grid-template-columns:1fr;align-items:center;min-height:44vh}
+    @media(min-width:960px){.hero-inner{grid-template-columns:60% 40%;}}
+    .eyebrow{display:inline-block;background:#eef2ff;border:1px solid #d9e2ff;color:#334155;padding:6px 10px;border-radius:999px;font-size:12px;margin-bottom:10px}
+    h1{margin:6px 0 8px;font-size:clamp(28px,5vw,48px);line-height:1.06;letter-spacing:-0.02em}
+    .sub{color:var(--muted);font-size:clamp(15px,1.2vw,18px);max-width:62ch}
+    .hero-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+    .hero-card ul{margin:10px 0 0 22px}
+    nav.toc{position:sticky;top:0;background:#ffffffcc;border-bottom:1px solid var(--line);backdrop-filter: blur(8px);z-index:20}
+    .toc-inner{max-width:1100px;margin:0 auto;padding:8px 20px;display:flex;flex-wrap:wrap;gap:10px}
+    .toc a{padding:8px 12px;border-radius:10px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);color:#334155;font-size:14px}
+    main{max-width:1100px;margin:0 auto;padding:20px}
+    section.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;margin:14px 0;box-shadow:var(--shadow)}
+    h2{margin:0 0 8px;font-size:26px}
+    .meta{color:var(--muted);font-size:14px}
+    .figure{border:1px dashed #d8e0ec;background:#fafcff;border-radius:14px;padding:12px;display:grid;gap:10px}
+    .figure .ph{width:100%;aspect-ratio:16/9;background:#eef2f7;border:1px solid #e6ebf2;border-radius:10px;display:grid;place-items:center;color:#64748b;font-size:14px}
+    .caption{color:#5b6b80;font-size:13px}
+    footer{color:var(--muted);text-align:center;padding:24px}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-inner">
+      <div>
+        <span class="eyebrow">Project · Thesis Chapter</span>
+        <h1>Cover Crops Restructure Soil Microbiomes Across Mississippi Agroecosystems</h1>
+        <p class="sub">Brief, publication-safe overview in my own words — <em>rationale and methodology only</em>. Manuscript submitted to <em>Science of the Total Environment</em>.</p>
+      </div>
+      <div class="hero-card">
+        <strong>Quick facts</strong>
+        <ul>
+          <li><strong>Scope:</strong> Five independent field trials (2020–2024)</li>
+          <li><strong>Crops:</strong> Corn, soybean, sweet potato</li>
+          <li><strong>Analyses:</strong> Amplicon sequencing, network ecology, neutral theory, ML biomarkers</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <div class="toc-inner">
+      <a href="#rationale">Rationale</a>
+      <a href="#methods">Methodology</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="rationale" class="card">
+      <h2>Rationale</h2>
+      <p>Cover crops are widely promoted for improving soil structure, nutrient cycling, and water retention; however, their system‑level effects on <em>soil microbial diversity, stability, and function</em> across contrasting environments remain under‑resolved. Mississippi offers a strong gradient in soil texture, fertility history, and management intensity. Rather than treating sites in isolation, I wanted to ask a broader question: <strong>Do cover crops consistently “rewire” microbial communities toward resilient, functionally rich states across this landscape?</strong></p>
+      <p>To address this, I harmonized multiple field datasets into a single analytical framework. The intent was not just to catalog taxonomic shifts, but to connect community assembly processes and network structure to functional potential that matters for producers—carbon turnover, nutrient availability, and suppression of opportunistic pathogens.</p>
+    </section>
+
+    <section id="methods" class="card">
+      <h2>Methodology (Brief)</h2>
+      <ul>
+        <li><strong>Design & scope.</strong> Integrated five independent cover‑crop trials (2020–2024) spanning multiple crop rotations and edaphic contexts to increase generalizability.</li>
+        <li><strong>Microbiome profiling.</strong> 16S rRNA and ITS2 amplicon sequencing processed via standardized QIIME2/DADA2 pipelines for ASV resolution and taxonomy (SILVA/UNITE).</li>
+        <li><strong>Community ecology.</strong> Diversity and β‑diversity analyses paired with <em>Sloan’s neutral model</em> to partition stochastic vs deterministic assembly under cover crops versus controls.</li>
+        <li><strong>Network stability.</strong> Co‑occurrence networks assessed for modularity, robustness, and keystone/hub taxa to evaluate putative stability gains under cover‑cropped soils.</li>
+        <li><strong>Functional inference.</strong> Tax4Fun2/FAPROTAX/FUNGuild used to link taxa to functional guilds and biogeochemical roles (C/N processes).</li>
+        <li><strong>Biomarker discovery.</strong> Machine‑learning classifiers (e.g., Random Forest) trained on harmonized features to identify reproducible bacterial/fungal indicators of cover‑cropped soils.</li>
+      </ul>
+      <div class="figure">
+        <div class="ph">Insert: graphical_abstract_or_state_map.png (16:9)</div>
+        <div class="caption"><strong>Figure.</strong> Placeholder for your graphical abstract or Mississippi site map. Replace with your image and credit the basemap/provider if needed.</div>
+      </div>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <p><strong>Author:</strong> Mahesh Chinthalapudi</p>
+      <p><strong>Email:</strong> maheshchinthalapudioleri [at] gmail [dot] com</p>
+      <p><a href="../index.html">↩ Back to main portfolio</a></p>
+    </section>
+  </main>
+
+  <footer>© <span id="y"></span> Mahesh Chinthalapudi — Project</footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
