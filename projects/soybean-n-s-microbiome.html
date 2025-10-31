@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>N &amp; S Fertilization Shapes the Soybean Rhizosphere Microbiome — Project Overview</title>
+  <meta name="description" content="Rationale, methodology, brief results, and critical reflections on nitrogen and sulfur effects on soybean rhizosphere microbial diversity and network structure." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6f8fb; --surface:#ffffff; --ink:#0f1720; --muted:#58677a; --line:#e6ebf2;
+      --accent:#2563eb; --accent-2:#7c3aed; --chip:#eef2f7; --link:#1d4ed8; --ring: rgba(37,99,235,0.15);
+      --shadow: 0 10px 30px rgba(2,8,20,0.06);
+      --hero-grad: linear-gradient(135deg,#eaf2ff 0%, #efe7ff 100%);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+    a{color:var(--link);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header.hero{background:var(--hero-grad);border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+    .container{max-width:1100px;margin:0 auto;padding:20px}
+    .hero-inner{display:grid;gap:18px;grid-template-columns:1fr;align-items:center;min-height:44vh}
+    @media(min-width:960px){.hero-inner{grid-template-columns:60% 40%}}
+    .eyebrow{display:inline-block;background:#eef2ff;border:1px solid #d9e2ff;color:#334155;padding:6px 10px;border-radius:999px;font-size:12px;margin-bottom:10px}
+    h1{margin:6px 0 8px;font-size:clamp(28px,5vw,48px);line-height:1.06;letter-spacing:-0.02em}
+    .sub{color:var(--muted);font-size:clamp(15px,1.2vw,18px);max-width:68ch}
+    .hero-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+    .hero-card ul{margin:10px 0 0 20px}
+    nav.toc{position:sticky;top:0;background:#ffffffcc;border-bottom:1px solid var(--line);backdrop-filter: blur(8px);z-index:20}
+    .toc-inner{max-width:1100px;margin:0 auto;padding:8px 20px;display:flex;flex-wrap:wrap;gap:10px}
+    .toc a{padding:8px 12px;border-radius:10px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);color:#334155;font-size:14px}
+    main{max-width:1100px;margin:0 auto;padding:20px}
+    section.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;margin:14px 0;box-shadow:var(--shadow)}
+    h2{margin:0 0 8px;font-size:26px}
+    h3{margin:14px 0 8px;font-size:20px}
+    .meta{color:var(--muted);font-size:14px}
+    .figure{border:1px dashed #d8e0ec;background:#fafcff;border-radius:14px;padding:12px;display:grid;gap:10px;margin-top:10px}
+    .figure .ph{width:100%;aspect-ratio:16/9;background:#eef2f7;border:1px solid #e6ebf2;border-radius:10px;display:grid;place-items:center;color:#64748b;font-size:14px}
+    .caption{color:#5b6b80;font-size:13px}
+    footer{color:var(--muted);text-align:center;padding:24px}
+    .callout{background:#eef9ff;border:1px solid #cbefff;color:#08425c;border-radius:12px;padding:12px}
+    ul.tight>li{margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-inner">
+      <div>
+        <span class="eyebrow">Project · Poster Study</span>
+        <h1>N &amp; S Fertilization Reshape Soybean Rhizosphere Microbiomes</h1>
+        <p class="sub">My goal with this work was to disentangle how nitrogen (N) availability and sulfur (S) inputs modulate the soybean rhizosphere—both in terms of community structure and interaction networks—so we can reason about microbiome–function links rather than only reporting diversity shifts.</p>
+      </div>
+      <div class="hero-card">
+        <strong>Quick facts</strong>
+        <ul class="tight">
+          <li><strong>Crop / Stage:</strong> Soybean (AG45xF3), sampled at R4</li>
+          <li><strong>Treatments:</strong> N = 0/100/150/200 lb ac<sup>−1</sup>; S = 0/15/25/35 lb ac<sup>−1</sup></li>
+          <li><strong>Design:</strong> Greenhouse randomized block, 4 reps</li>
+          <li><strong>Analyses:</strong> α/β-diversity, co-occurrence networks, OTU overlap (Venn)</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <div class="toc-inner">
+      <a href="#rationale">Rationale</a>
+      <a href="#methods">Methodology</a>
+      <a href="#results">Brief Results</a>
+      <a href="#critique">Critical Reflections</a>
+      <a href="#questions">Open Questions</a>
+      <a href="#refs">References</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="rationale" class="card">
+      <h2>Rationale</h2>
+      <p>In high-input systems, N additions can amplify yields but also reconfigure the rhizosphere’s resource landscape, potentially favoring copiotrophic strategists and altering enzyme investment and necromass turnover. S, though required in smaller amounts, can influence N assimilation and redox balance. I wanted to know whether N and S act as <em>filters</em> on soybean-associated communities—and whether those filters manifest primarily as diversity shifts, re-wiring of species associations, or both. Prior work shows that fertility regimes and plant status co-determine microbial diversity and function (e.g., links between nutrient stoichiometry, enzyme cycling, and the balance of deterministic vs. stochastic assembly).</p>
+      <div class="callout"><strong>Why I framed it this way:</strong> Merely asking “does N change diversity?” is insufficient. I wanted to connect fertilizer regimes to <em>who interacts with whom</em> and whether community structure signals changes in functional potential relevant to nutrient cycling.</div>
+    </section>
+
+    <section id="methods" class="card">
+      <h2>Methodology</h2>
+      <h3>Experimental Setup</h3>
+      <ul class="tight">
+        <li><strong>Plant material:</strong> Soybean cultivar AG45xF3 (RR Foil Plant Science Research greenhouse, MSU).</li>
+        <li><strong>Design:</strong> Randomized block, four replications; factorial N and S rates (N: 0, 100, 150, 200 lb ac<sup>−1</sup>; S: 0, 15, 25, 35 lb ac<sup>−1</sup>), applied as urea and elemental sulfur.</li>
+        <li><strong>Sampling:</strong> Rhizosphere collected at R4 by gentle root brushing; stored at −80 °C prior to processing; basic soil chemistry characterized on subsamples.</li>
+      </ul>
+      <h3>Microbial Analyses</h3>
+      <ul class="tight">
+        <li><strong>Community structure:</strong> α-diversity (Chao1, Shannon) and β-diversity (Bray–Curtis) contrasts across N and S treatments.</li>
+        <li><strong>Overlap &amp; turnover:</strong> OTU Venn diagrams to visualize shared vs. unique taxa across fertilizer levels.</li>
+        <li><strong>Association structure:</strong> Co-occurrence networks to evaluate modularity and hub taxa under low-N vs high-N endpoints.</li>
+      </ul>
+
+      <div class="figure">
+        <img src="images/soybean-abundance.png" alt="Graphical abstract showing phylum level abundance in N fertilizer gradient" style="width:100%;border-radius:10px;" />
+        <div class="caption"><strong>Figure 1.</strong>Phylum-level relative abundance chart.</div>
+      </div>
+      <div class="figure">
+        <img src="images/alpha-soybean.png" alt="Graphical abstract showing alpha diversity between N and S treatments" style="width:100%;border-radius:10px;" />
+        <div class="caption"><strong>Figure 2.</strong> (A, B) Bacterial alpha diversity indices represented by chao1 richness (A), and Shannon diversity index (B) in rhizosphere soils of soybean. (C, D) Comparative overlap of OTU abundance shown in Venn diagrams, illustrating the shared and unique OTUs between treatment levels of nitrogen and sulfur.</div>
+      </div>
+      <div class="figure">
+        <img src="images/soybean-beta.png" alt="Graphical abstract showing phylum level abundance in N fertilizer gradient" style="width:100%;border-radius:10px;" />
+        <div class="caption"><strong>Figure 3.</strong> (A, B) Co-occurrence networks of bacterial communities for no nitrogen samples (A) and 200 lbs. nitrogen applied samples (B). (C, D) Beta diversities of bacterial communities under sulfur (C) and nitrogen (D) treatments.</div>
+      </div>
+    </section>
+
+    <section id="results" class="card">
+      <h2>Brief Results</h2>
+      <ul class="tight">
+        <li><strong>N effects were clear:</strong> N fertilization differentiated β-diversity and increased α-diversity in the rhizosphere relative to no-N. Co-occurrence networks diverged between 0 and 200 lb ac<sup>−1</sup> N, indicating re-wiring of associations under higher N.</li>
+        <li><strong>S effects were limited:</strong> S did not produce distinct β-diversity groupings and showed negligible effects on α-diversity within this design.</li>
+        <li><strong>Central clades under high N:</strong> Network centrality pointed to Actinobacteriota, Proteobacteria, and Firmicutes as recurrent hubs, consistent with shifts toward copiotrophic or enzyme-investing groups under elevated N.</li>
+      </ul>
+      <p class="meta">Interpretation stays brief here by design; see my reflections below for what these patterns may mean mechanistically.</p>
+    </section>
+
+    <section id="critique" class="card">
+      <h2>Critical Reflections (My View)</h2>
+      <ul class="tight">
+        <li><strong>N as a community filter:</strong> The pronounced N signal suggests that substrate stoichiometry and N-driven plant physiology (exudation quantity/quality) are key levers. Elevated N likely relaxes N-limitations on fast-growing taxa and shifts enzyme portfolios toward polymer/necromass turnover where labile C pulses aren’t dominant.</li>
+        <li><strong>Why S was muted here:</strong> S demand is lower and often coupled to N assimilation and redox; in this substrate and timeframe, S may not have been limiting. A field context with sulfate dynamics or co-limitation could reveal different outcomes.</li>
+        <li><strong>Networks matter:</strong> Changes in modularity and degree distribution can precede measurable function shifts. The appearance of hub taxa under high N suggests altered cross-feeding and byproduct use, which warrants functional follow-up (enzymes, metatranscriptomics).</li>
+        <li><strong>Design next steps:</strong> Pair absolute abundances (qPCR/flow) with enzyme assays (BG, NAG, arylsulfatase) and plant traits to test whether central taxa causally link to nutrient-use efficiency or residue processing.</li>
+      </ul>
+    </section>
+
+    <section id="questions" class="card">
+      <h2>Open Questions</h2>
+      <ul class="tight">
+        <li><strong>Exudate coupling:</strong> Do N-driven changes in root exudation (sugars vs. phenolics) explain the observed network re-wiring? Targeted metabolomics could close this loop.</li>
+        <li><strong>Function vs. structure:</strong> Do enzyme activities (β-glucosidase, N-acetylglucosaminidase, arylsulfatase) track network centrality of Actinobacteriota/Proteobacteria under high N?</li>
+        <li><strong>S in the field:</strong> Under what soil types or sulfate backgrounds does S become a true driver of community differentiation and function?</li>
+        <li><strong>Stability trade-offs:</strong> Does high-N increase short-term function at the expense of network robustness to perturbation (e.g., drought)? Longitudinal perturbation assays could quantify this.</li>
+      </ul>
+    </section>
+
+    <section id="refs" class="card">
+      <h2>References</h2>
+      <ul class="meta">
+        <li>Astudillo-García, C., Hermans, S. M., Stevenson, B., Buckley, H. L., &amp; Lear, G. (2019). Microbial assemblages and bioindicators as proxies for ecosystem health status: Potential and limitations. <em>Applied Microbiology and Biotechnology</em>, 103, 6407–6421.</li>
+        <li>Nguyen, N. H., Song, Z., Bates, S. T., et al. (2016). FUNGuild: An open annotation tool for parsing fungal community datasets by ecological guild. <em>Fungal Ecology</em>, 20, 241–248.</li>
+        <li>Scavo, A., Fontanazza, S., &amp; Restuccia, A. (2022). The role of cover crops in improving soil fertility and plant nutritional status in temperate climates: A review. <em>Agronomy for Sustainable Development</em>, 42, 93.</li>
+        <li>Trivedi, P., Leach, J. E., Tringe, S. G., Sa, T., &amp; Singh, B. K. (2020). Plant–microbiome interactions: From community assembly to plant health. <em>Nature Reviews Microbiology</em>, 18, 607–621.</li>
+        <li>Aislabie, J., Deslippe, J. R., &amp; Dymond, J. (2013). Soil microbes and their contribution to soil services. In Dymond, J. R. (Ed.), <em>Ecosystem Services in New Zealand</em> (pp. 143–161). Manaaki Whenua Press.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h3>Contact</h3>
+      <p><strong>Author:</strong> Mahesh Chinthalapudi</p>
+      <p><strong>Email:</strong> maheshchinthalapudioleri [at] gmail [dot] com</p>
+      <p><a href="../index.html">↩ Back to main portfolio</a></p>
+    </section>
+  </main>
+
+  <footer>© <span id="y"></span> Mahesh Chinthalapudi — Project</footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
